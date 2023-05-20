@@ -13,7 +13,7 @@ This is a Flutter application developed as part of a final project. It showcases
 ## Screenshots
 
 <div>
-  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/blob/main/assets/87098443/b6a7a9d5-38fb-4991-ab09-f18d9edcad7d.png" width="200">
+  <img src="![login](https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/ed53b655-020a-4d84-bc54-17095b8f45ee)" width="200">
   <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/blob/main/assets/87098443/47d90d16-920c-4bef-aa13-849c03860705.png" width="200">
   <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/blob/main/assets/87098443/b44b4180-9d13-45ff-9ae6-38fdb2b1e62f.png" width="200">
 </div>
