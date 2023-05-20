@@ -1,17 +1,30 @@
+import 'package:bcrypt/bcrypt.dart';
+import 'package:final_flutter/Screens/categories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../Handlers/DatabaseHandler.dart';
+import 'User.dart';
+import 'login.dart';
+
+String name = "", email = "";
+final pwController = TextEditingController();
+final pwConfirmController = TextEditingController();
 
 class ProfilePage extends StatelessWidget {
-  final String name;
-  final String email;
+   ProfilePage({super.key});
 
-  const ProfilePage({super.key,
-    required this.name,
-    required this.email,
-  });
+  void getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    email = prefs.getString('email')!;
+    name = await DatabaseHandler.getUser(email).then((value) => value?.name ?? "");
+  }
 
   @override
   Widget build(BuildContext context) {
+    getData();
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
@@ -24,7 +37,7 @@ class ProfilePage extends StatelessWidget {
               Container(
                 height: double.infinity,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -37,25 +50,25 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 120),
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 120),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CircleAvatar(
+                      const CircleAvatar(
                         radius: 50,
-                        backgroundImage: AssetImage(
-                            'assets/profile_photo.png'), // Replace with the actual image path
+                        backgroundImage: AssetImage('assets/images/cat.jpg'), // Replace with the actual image path
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       buildProfileInfo('Name', name),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       buildProfileInfo('Email', email),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       buildPassword(),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       buildConfirmPassword(),
-                      buildUpdatePasswordButton(),
+                      buildUpdatePasswordButton(context),
+                      buildLogOutButton(context),
                     ],
                   ),
                 ),
@@ -72,19 +85,19 @@ class ProfilePage extends StatelessWidget {
       children: <Widget>[
         Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
           textAlign: TextAlign.center,
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
             value,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 16,
             ),
@@ -99,12 +112,12 @@ class ProfilePage extends StatelessWidget {
     return ElevatedButton(
       onPressed: () => Navigator.pop(context),
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
       ),
-      child: Text(
+      child: const Text(
         'Return',
         style: TextStyle(
           color: Colors.white,
@@ -120,7 +133,7 @@ Widget buildPassword() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
-      Text(
+      const Text(
         'Password',
         style: TextStyle(
           color: Colors.white,
@@ -128,13 +141,13 @@ Widget buildPassword() {
           fontWeight: FontWeight.bold,
         ),
       ),
-      SizedBox(height: 10),
+      const SizedBox(height: 10),
       Container(
         alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Colors.black26,
               blurRadius: 6,
@@ -144,9 +157,10 @@ Widget buildPassword() {
         ),
         height: 60,
         child: TextField(
+          controller: pwController,
           obscureText: true,
-          style: TextStyle(color: Colors.black87),
-          decoration: InputDecoration(
+          style: const TextStyle(color: Colors.black87),
+          decoration: const InputDecoration(
             border: InputBorder.none,
             contentPadding: EdgeInsets.only(top: 14),
             prefixIcon: Icon(
@@ -166,7 +180,7 @@ Widget buildConfirmPassword() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
-      Text(
+      const Text(
         'Confirm Password',
         style: TextStyle(
           color: Colors.white,
@@ -174,13 +188,13 @@ Widget buildConfirmPassword() {
           fontWeight: FontWeight.bold,
         ),
       ),
-      SizedBox(height: 10),
+      const SizedBox(height: 10),
       Container(
         alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Colors.black26,
               blurRadius: 6,
@@ -190,9 +204,10 @@ Widget buildConfirmPassword() {
         ),
         height: 60,
         child: TextField(
+          controller: pwConfirmController,
           obscureText: true,
-          style: TextStyle(color: Colors.black87),
-          decoration: InputDecoration(
+          style: const TextStyle(color: Colors.black87),
+          decoration: const InputDecoration(
             border: InputBorder.none,
             contentPadding: EdgeInsets.only(top: 14),
             prefixIcon: Icon(
@@ -208,19 +223,27 @@ Widget buildConfirmPassword() {
   );
 }
 
-Widget buildUpdatePasswordButton() {
+Widget buildUpdatePasswordButton(BuildContext context) {
   return Container(
-    padding: EdgeInsets.symmetric(vertical: 25),
+    padding: const EdgeInsets.symmetric(vertical: 25),
     width: double.infinity,
     child: ElevatedButton(
-      onPressed: () => print('Updated Password'),
+      onPressed: () => {
+        if(checkPassword()){
+          updatePassword(pwController.text),
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CategoryList()),
+          )
+        }
+      },
       style: ElevatedButton.styleFrom(
         elevation: 5,
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         primary: Colors.white,
       ),
-      child: Text(
+      child: const Text(
         'Update Password',
         style: TextStyle(
           color: Color(0xff5ac18e),
@@ -230,4 +253,76 @@ Widget buildUpdatePasswordButton() {
       ),
     ),
   );
+}
+
+Widget buildLogOutButton(BuildContext context) {
+  return Container(
+    padding: const EdgeInsets.symmetric(vertical: 25),
+    width: double.infinity,
+    child: ElevatedButton(
+      onPressed: () => {
+        addStringToSF(""),
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const LoginScreen()),
+        )
+
+      },
+      style: ElevatedButton.styleFrom(
+        elevation: 5, backgroundColor: Colors.white,
+        padding: const EdgeInsets.all(15),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      ),
+      child: const Text(
+        'Log Out',
+        style: TextStyle(
+          color: Color(0xffFF0000),
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ),
+  );
+}
+
+void updatePassword(String pw) async {
+  User? user = await DatabaseHandler.getUser(email);
+  String hashedPW = BCrypt.hashpw(pw, BCrypt.gensalt());
+  user?.setHashedPW(hashedPW);
+  DatabaseHandler.updateUser(user!);
+}
+
+bool checkPassword(){
+  if(pwController.text != pwConfirmController.text){
+    showToast("Passwords do not match");
+    return false;
+  }
+  if(pwController.text.length < 4){
+    showToast("Password must be at least 4 characters");
+    return false;
+  }
+  showToast("Password updated successfully!");
+  return true;
+}
+
+void showToast(String msg) {
+  Fluttertoast.showToast(
+    msg: msg,
+    toastLength: Toast.LENGTH_SHORT,
+    // Duration for which the toast should be visible
+    gravity: ToastGravity.BOTTOM,
+    // Position of the toast on the screen
+    timeInSecForIosWeb: 1,
+    // Time duration for iOS-specific platforms
+    backgroundColor: Colors.black54,
+    // Background color of the toast
+    textColor: Colors.white,
+    // Text color of the toast
+    fontSize: 16.0, // Font size of the toast message
+  );
+}
+
+void addStringToSF(String email) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString('email', email);
 }

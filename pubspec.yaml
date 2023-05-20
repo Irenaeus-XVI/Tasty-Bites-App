@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   dio: ^4.0.0
+  shared_preferences: ^2.0.5
   http: ^0.13.4
   fluttertoast: ^8.0.8
   email_validator: '^2.1.16'

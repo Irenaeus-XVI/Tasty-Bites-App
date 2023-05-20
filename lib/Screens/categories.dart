@@ -1,4 +1,6 @@
+import 'package:final_flutter/Screens/profile.dart';
 import 'package:flutter/material.dart';
+
 import '../Models/Category.dart';
 import 'Meals_List.dart';
 
@@ -140,13 +142,13 @@ class _CategoryListState extends State<CategoryList> {
           onSelected: (value) {
             switch (value) {
               case 1:
-              // Perform action for Option 1
+                // Perform action for Option 1
                 break;
               case 2:
-              // Perform action for Option 2
+                // Perform action for Option 2
                 break;
               case 3:
-              // Perform action for Option 3
+                // Perform action for Option 3
                 break;
             }
           },
@@ -197,16 +199,18 @@ class _CategoryListState extends State<CategoryList> {
           label: 'Notification',
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.calendar_today,
-            color: Colors.white,
-          ),
-          label: 'Schedule',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.person_rounded,
-            color: Colors.white,
+          icon: GestureDetector(
+            onTap: () {
+              // Handle click on "Person" icon
+              Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ProfilePage(),
+                  ));
+            },
+            child: Icon(
+              Icons.person_rounded,
+              color: Colors.white,
+            ),
           ),
           label: 'Person',
         ),

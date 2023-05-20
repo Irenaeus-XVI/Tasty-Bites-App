@@ -1,11 +1,11 @@
 import 'package:bcrypt/bcrypt.dart';
-import 'package:final_flutter/Screens/Meal_List.dart';
+import 'package:final_flutter/Screens/categories.dart';
 import 'package:final_flutter/Screens/signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import '../Handlers/DatabaseHandler.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -154,6 +154,7 @@ class _loginScreenState extends State<LoginScreen> {
             {
               // TODO : Navigate to Home Page
               showToast(),
+              addStringToSF(emailController.text),
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => CategoryList(),
@@ -300,4 +301,9 @@ void showToast() {
     // Text color of the toast
     fontSize: 16.0, // Font size of the toast message
   );
+}
+
+addStringToSF(String email) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString('email', email);
 }
