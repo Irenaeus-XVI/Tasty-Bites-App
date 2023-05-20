@@ -1,9 +1,10 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+
 import '../User.dart';
 
 class DatabaseHandler {
-  static const int _version = 1;
+  static const int _version = 2;
   static const String _dbName = "Users.db";
 
   static Future<Database> _getDB() async {
@@ -17,7 +18,7 @@ class DatabaseHandler {
 
   static Future<int> addUser(User user) async {
     final db = await _getDB();
-    return await db.insert('Users', user.toJson(), conflictAlgorithm: ConflictAlgorithm.replace);
+    return await db.insert('Users', user.toJson(), conflictAlgorithm: ConflictAlgorithm.abort);
   }
 
   static Future<int> updateUser(User user) async {
@@ -30,11 +31,11 @@ class DatabaseHandler {
     final db = await _getDB();
     final List<Map<String, dynamic>> maps = await db.query('Users', where: 'email = ?', whereArgs: [email]);
 
-    if(maps.isEmpty) {
-      return null;
-    }
-
-    return User.fromJson(maps[0]);
+      if(maps.isEmpty){
+        return User(name: "", email: "", hashedPW: "");
+      }else {
+        return User.fromJson(maps.first);
+      }
   }
 
   static Future<List<User>?> getAllUsers() async {

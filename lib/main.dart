@@ -1,20 +1,12 @@
 
+import 'package:final_flutter/login.dart';
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:bcrypt/bcrypt.dart';
-import 'Handlers/DatabaseHandler.dart';
-import 'User.dart';
 
 void main() {
-  runApp(const MyApp());
-  String name = "name";
-  String email = "email";
-  String pw = "password";
-  String hashedPW = BCrypt.hashpw(pw, BCrypt.gensalt());
-  User user = User(name:name, email:email, hashedPW:hashedPW);
-  DatabaseHandler.addUser(user);
-  Future<User?> user2 = DatabaseHandler.getUser("email");
-  user2.then((value) => print(value?.getHashedPW()));
+  runApp(MaterialApp(
+    title: 'Flutter Local Database demo app',
+    home: LoginScreen(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -28,5 +20,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
     );
+
   }
 }
