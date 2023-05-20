@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'Handlers/DatabaseHandler.dart';
+import '../Handlers/DatabaseHandler.dart';
 import 'User.dart';
 import 'login.dart';
 
@@ -347,8 +347,8 @@ class _SignupScreenState extends State<SignupScreen> {
                     colors: [
                       Color(0x665ac18e),
                       Color(0x995ac18e),
-                      Color(0xcc5ac18e),
-                      Color(0xff5ac18e),
+                      Color(0xFF009090),
+                      Color(0xFF008080),
                     ],
                   ),
                 ),

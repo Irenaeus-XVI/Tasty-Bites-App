@@ -1,11 +1,12 @@
 import 'package:bcrypt/bcrypt.dart';
-import 'package:final_flutter/signup.dart';
+import 'package:final_flutter/Screens/Meal_List.dart';
+import 'package:final_flutter/Screens/signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'Handlers/DatabaseHandler.dart';
+import '../Handlers/DatabaseHandler.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -124,8 +125,8 @@ class _loginScreenState extends State<LoginScreen> {
             data: ThemeData(unselectedWidgetColor: Colors.white),
             child: Checkbox(
               value: isRememberMe,
-              checkColor: Colors.green,
-              activeColor: Colors.white,
+              checkColor: Color(0xFF008080),
+              activeColor: Color(0xFF008080),
               onChanged: (value) {
                 setState(() {
                   isRememberMe = value!;
@@ -152,13 +153,16 @@ class _loginScreenState extends State<LoginScreen> {
           if (await checkCredentials(emailController.text, pwController.text))
             {
               // TODO : Navigate to Home Page
-              print("Login Successful"),
-              showToast()
+              showToast(),
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => CategoryList(),
+                ),
+              ),
+              print("yes")
             }
           else
-            {
-              showToast()
-            }
+            {showToast(), print("no")}
         },
         padding: const EdgeInsets.all(15),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -166,7 +170,7 @@ class _loginScreenState extends State<LoginScreen> {
         child: const Text(
           'Login',
           style: TextStyle(
-            color: Color(0xff5ac18e),
+            color: Color(0xFF008080),
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -219,11 +223,11 @@ class _loginScreenState extends State<LoginScreen> {
                 width: double.infinity,
                 decoration: const BoxDecoration(
                     gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [
-                  Color(0x665ac18e),
-                  Color(0x995ac18e),
-                  Color(0xcc5ac18e),
-                  Color(0xff5ac18e),
-                ])),
+                      Color(0x665ac18e),
+                      Color(0x995ac18e),
+                      Color(0xcc5ac18e),
+                      Color(0xFF008080),
+                    ])),
                 child: SingleChildScrollView(
                   physics: const AlwaysScrollableScrollPhysics(),
                   padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 120),

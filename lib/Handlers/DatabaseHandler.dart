@@ -1,7 +1,7 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../User.dart';
+import '../Screens/User.dart';
 
 class DatabaseHandler {
   static const int _version = 2;
