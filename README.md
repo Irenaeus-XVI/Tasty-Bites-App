@@ -12,9 +12,11 @@ This is a Flutter application developed as part of a final project. It showcases
 
 ## Screenshots
 
-![Uploading Meals_Lits.png…]()
-![login](https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/74b5cc3b-30ed-4d8d-be31-8ba1ad99689c)
-
+<img src="https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/74b5cc3b-30ed-4d8d-be31-8ba1ad99689c" width="200">
+<img src="https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/2f7c50f2-c50b-45ea-b2d9-ff0099900740" width="200">
+<img src="https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/52b30c33-25ac-42cf-a625-8c497b65147c" width="200">
+<img src="https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/200ddc98-628b-416e-9d05-154893552d39" width="200">
+<img src="https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/8bbb487f-5ab4-4d88-b3a4-ba75f25d8552" width="200">
 
 ## Getting Started
 
@@ -53,5 +55,3 @@ Contributions are welcome! If you find any issues or want to enhance the app, fe
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
-    
