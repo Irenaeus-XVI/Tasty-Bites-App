@@ -1,4 +1,6 @@
-# Flutter-Final
+# Yummy-Bites-App
+
+
 
 This is a Flutter application developed as part of a final project. It showcases various features and functionalities of Flutter to build a meal ordering app.
 
@@ -13,7 +15,7 @@ This is a Flutter application developed as part of a final project. It showcases
 ## Screenshots
 
 <div>
-  <img src="https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/74b5cc3b-30ed-4d8d-be31-8ba1ad99689c" width="200">
+  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/74b5cc3b-30ed-4d8d-be31-8ba1ad99689c" width="200">
   <img src="https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/2f7c50f2-c50b-45ea-b2d9-ff0099900740" width="200">
   <img src="https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/388783d5-d699-47e4-aacb-e7b317dde6e3" width="200">
   
