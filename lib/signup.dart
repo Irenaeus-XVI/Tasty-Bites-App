@@ -232,7 +232,7 @@ class _SignupScreenState extends State<SignupScreen> {
           if (await checkCredentials(nameController.text, emailController.text, pwController.text, confirmPwController.text))
             {
               hashPassword = BCrypt.hashpw(pwController.text, BCrypt.gensalt()),
-              DatabaseHandler.addUser(User(name: nameController.text, email: emailController.text, hashedPW: pwController.text)),
+              DatabaseHandler.addUser(User(name: nameController.text, email: emailController.text, hashedPW: hashPassword)),
               showToast("Account created successfully!"),
               Navigator.push(
                 context,

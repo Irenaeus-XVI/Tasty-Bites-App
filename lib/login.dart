@@ -152,10 +152,13 @@ class _loginScreenState extends State<LoginScreen> {
           if (await checkCredentials(emailController.text, pwController.text))
             {
               // TODO : Navigate to Home Page
+              print("Login Successful"),
               showToast()
             }
           else
-            {showToast()}
+            {
+              showToast()
+            }
         },
         padding: const EdgeInsets.all(15),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
