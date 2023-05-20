@@ -1,16 +1,56 @@
-# final_flutter
+# Flutter-Final
 
-A new Flutter project.
+This is a Flutter application developed as part of a final project. It showcases various features and functionalities of Flutter to build a meal ordering app.
+
+## Features
+
+- View a list of meal categories
+- Explore meals within each category
+- View meal details including name, image, description, and calorie count
+- Add meals to the cart
+- Display a toast message when a meal is added to the cart
+
+## Screenshots
+
+![Uploading Meals_Lits.png…]()
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run this application on your local machine, follow these steps:
 
-A few resources to get you started if this is your first Flutter project:
+1. Ensure that you have Flutter installed. If not, follow the [Flutter installation guide](https://flutter.dev/docs/get-started/install).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+2. Clone this repository to your local machine using the following command:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+   ` git clone https://github.com/Irenaeus-XVI/Flutter-Final.git `
+   
+3. Change to the project directory:   
+    ` cd Flutter-Final `
+    
+
+4. Run the app using the Flutter CLI:
+
+   ` flutter run `
+
+
+This will launch the app on your connected device or emulator.
+
+## Dependencies
+
+This project relies on the following dependencies:
+
+- flutter: [Flutter Framework](https://flutter.dev/)
+- fluttertoast: [Fluttertoast Package](https://pub.dev/packages/fluttertoast)
+
+For detailed information about the dependencies and their versions, please refer to the `pubspec.yaml` file in the project.
+
+## Contributing
+
+Contributions are welcome! If you find any issues or want to enhance the app, feel free to open a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+    
