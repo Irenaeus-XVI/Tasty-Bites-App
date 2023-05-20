@@ -213,7 +213,9 @@ class _loginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  WillPopScope(
+      onWillPop: () async => false,
+    child: Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
@@ -255,6 +257,7 @@ class _loginScreenState extends State<LoginScreen> {
           ),
         ),
       ),
+    ),
     );
   }
 }

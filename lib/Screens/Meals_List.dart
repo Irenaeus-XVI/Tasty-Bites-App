@@ -1,4 +1,5 @@
 import 'package:final_flutter/Models/Meals.dart';
+import 'package:final_flutter/Screens/profile.dart';
 import 'package:flutter/material.dart';
 
 import 'Meals_Details.dart';
@@ -86,26 +87,43 @@ class _MealsListState extends State<MealsList> {
         });
       },
       type: BottomNavigationBarType.fixed,
+      selectedLabelStyle: TextStyle(color: Colors.white),
+      unselectedLabelStyle: TextStyle(color: Color(0xff222222)),
       items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
+          icon: Icon(
+            Icons.home,
+            color: Colors.white,
+          ),
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.notifications_sharp),
+          icon: Icon(
+            Icons.notifications_sharp,
+            color: Colors.white,
+          ),
           label: 'Notification',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.calendar_today),
-          label: 'Schedule',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person_rounded),
+          icon: GestureDetector(
+            onTap: () {
+              // Handle click on "Person" icon
+              Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ProfilePage(),
+                  ));
+            },
+            child: Icon(
+              Icons.person_rounded,
+              color: Colors.white,
+            ),
+          ),
           label: 'Person',
         ),
       ],
     );
   }
+
 
   Widget mealCard(Meals meal) {
     return GestureDetector(
