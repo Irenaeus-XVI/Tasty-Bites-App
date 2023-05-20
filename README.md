@@ -13,16 +13,20 @@ This is a Flutter application developed as part of a final project. It showcases
 ## Screenshots
 
 <div>
-  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/74b5cc3b-30ed-4d8d-be31-8ba1ad99689c" width="200">
-  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/2f7c50f2-c50b-45ea-b2d9-ff0099900740" width="200">
-  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/388783d5-d699-47e4-aacb-e7b317dde6e3" width="200">
+  ![login](https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/b6a7a9d5-38fb-4991-ab09-f18d9edcad7d)
+![signup](https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/47d90d16-920c-4bef-aa13-849c03860705)
+![profile_screen](https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/b44b4180-9d13-45ff-9ae6-38fdb2b1e62f)
+
+
 </div>
 
 <div>
-  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/11e57f02-4777-4064-9388-b3f46bd801b7" width="200">
-  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/6b55bc03-2e8f-470e-9139-dfa3b6a628e2" width="200">
-  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/4d03a00d-341a-4da8-af55-9f48dd201677" width="200">
-  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/d9ff7e82-b41b-497a-b1b0-4dabe566f799" width="200">
+  
+  ![category_list](https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/00f8746c-8a3f-4716-a5f0-6e88a758edcc)
+  ![Meals_Lits](https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/cafb8b8f-a37e-409c-97f3-24318979a205)
+ ![Meal_Details](https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/80c83357-84e1-4d84-8f4c-ce0f6fab6ec6)
+![order_placed](https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/f362d5df-8d56-49e5-9cfe-f46db868dc2e)
+
 </div>
 
 ## Getting Started
