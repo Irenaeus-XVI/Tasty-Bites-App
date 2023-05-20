@@ -14,9 +14,12 @@ This is a Flutter application developed as part of a final project. It showcases
 
 <img src="https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/74b5cc3b-30ed-4d8d-be31-8ba1ad99689c" width="200">
 <img src="https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/2f7c50f2-c50b-45ea-b2d9-ff0099900740" width="200">
-<img src="https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/52b30c33-25ac-42cf-a625-8c497b65147c" width="200">
-<img src="https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/200ddc98-628b-416e-9d05-154893552d39" width="200">
-<img src="https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/8bbb487f-5ab4-4d88-b3a4-ba75f25d8552" width="200">
+![category_list](https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/11e57f02-4777-4064-9388-b3f46bd801b7)
+![Meals_Lits](https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/6b55bc03-2e8f-470e-9139-dfa3b6a628e2)
+![Meals_Lits](https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/6b55bc03-2e8f-470e-9139-dfa3b6a628e2)
+![profile_screen](https://github.com/Irenaeus-XVI/Flutter-Final/assets/87098443/388783d5-d699-47e4-aacb-e7b317dde6e3)
+
+
 
 ## Getting Started
 
