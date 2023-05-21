@@ -1,9 +1,11 @@
-# Yummy-Bites-App
+# Tasty-Bites-App
 
-This is a Flutter application developed as part of a final project. It showcases various features and functionalities of Flutter to build a meal ordering app.
+This is a Flutter application developed as part of a final project for Mobile Application course. It showcases various features and functionalities of Flutter to build a meal ordering app.
 
 ## Features
 
+- Make your own account
+- Enhanced security for your account
 - View a list of meal categories
 - Explore meals within each category
 - View meal details including name, image, description, and calorie count
@@ -34,10 +36,10 @@ To run this application on your local machine, follow these steps:
 
 2. Clone this repository to your local machine using the following command:
 
-   ` git clone https://github.com/Irenaeus-XVI/Yummy-Bites-App.git `
+   ` git clone https://github.com/Irenaeus-XVI/Tasty-Bites-App.git `
    
 3. Change to the project directory:   
-    ` cd Yummy-Bites-App `
+    ` cd Tasty-Bites-App `
     
 
 4. Run the app using the Flutter CLI:
