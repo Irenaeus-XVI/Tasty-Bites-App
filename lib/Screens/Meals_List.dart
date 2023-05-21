@@ -1,5 +1,5 @@
-import 'package:final_flutter/Models/Meals.dart';
-import 'package:final_flutter/Screens/profile.dart';
+import 'package:TastyBites/Models/Meals.dart';
+import 'package:TastyBites/Screens/profile.dart';
 import 'package:flutter/material.dart';
 
 import 'Meals_Details.dart';

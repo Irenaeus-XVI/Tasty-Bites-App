@@ -1,6 +1,6 @@
 import 'package:bcrypt/bcrypt.dart';
-import 'package:final_flutter/Screens/categories.dart';
-import 'package:final_flutter/Screens/signup.dart';
+import 'package:TastyBites/Screens/categories.dart';
+import 'package:TastyBites/Screens/signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

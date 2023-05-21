@@ -1,5 +1,5 @@
 import 'package:bcrypt/bcrypt.dart';
-import 'package:final_flutter/Screens/categories.dart';
+import 'package:TastyBites/Screens/categories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';

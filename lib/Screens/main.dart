@@ -1,5 +1,5 @@
-import 'package:final_flutter/Screens/categories.dart';
-import 'package:final_flutter/Screens/login.dart';
+import 'package:TastyBites/Screens/categories.dart';
+import 'package:TastyBites/Screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

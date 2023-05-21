@@ -1,4 +1,4 @@
-import 'package:final_flutter/Screens/profile.dart';
+import 'package:TastyBites/Screens/profile.dart';
 import 'package:flutter/material.dart';
 
 import '../Models/Category.dart';

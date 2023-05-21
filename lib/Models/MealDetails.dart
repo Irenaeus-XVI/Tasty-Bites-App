@@ -1,4 +1,4 @@
-import 'package:final_flutter/Api/getMealDetails.dart';
+import 'package:TastyBites/Api/getMealDetails.dart';
 
 import '../Api/getMeals.dart';
 
