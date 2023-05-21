@@ -58,7 +58,3 @@ For detailed information about the dependencies and their versions, please refer
 ## Contributing
 
 Contributions are welcome! If you find any issues or want to enhance the app, feel free to open a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
