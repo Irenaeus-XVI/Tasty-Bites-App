@@ -11,7 +11,7 @@ void main() async {
 
   Widget currentScreen;
   String? savedEmail = await getData();
-  if (savedEmail != "") {
+  if (savedEmail != "" && savedEmail != null) {
     currentScreen = CategoryList();
     // Data is available, do something with savedEmail
     print('Saved email: $savedEmail');

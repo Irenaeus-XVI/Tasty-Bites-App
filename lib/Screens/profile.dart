@@ -9,22 +9,34 @@ import '../Handlers/DatabaseHandler.dart';
 import 'User.dart';
 import 'login.dart';
 
-String name = "", email = "";
-final pwController = TextEditingController();
-final pwConfirmController = TextEditingController();
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key? key}) : super(key: key);
 
-class ProfilePage extends StatelessWidget {
-   ProfilePage({super.key});
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  String name = '';
+  String email = '';
+  final pwController = TextEditingController();
+  final pwConfirmController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
 
   void getData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     email = prefs.getString('email')!;
-    name = await DatabaseHandler.getUser(email).then((value) => value?.name ?? "");
+    name = (await DatabaseHandler.getUser(email))?.name ?? '';
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    getData();
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
@@ -127,202 +139,197 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
-}
 
-Widget buildPassword() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      const Text(
-        'Password',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
+  Widget buildPassword() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const Text(
+          'Password',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-      ),
-      const SizedBox(height: 10),
-      Container(
-        alignment: Alignment.centerLeft,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 6,
-              offset: Offset(0, 2),
+        const SizedBox(height: 10),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 6,
+                offset: Offset(0, 2),
+              ),
+            ],
+          ),
+          height: 60,
+          child: TextField(
+            controller: pwController,
+            obscureText: true,
+            style: const TextStyle(color: Colors.black87),
+            decoration: const InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14),
+              prefixIcon: Icon(
+                Icons.lock,
+                color: Color(0xff5ac18e),
+              ),
+              hintText: 'Password',
+              hintStyle: TextStyle(color: Colors.black38),
             ),
-          ],
+          ),
         ),
-        height: 60,
-        child: TextField(
-          controller: pwController,
-          obscureText: true,
-          style: const TextStyle(color: Colors.black87),
-          decoration: const InputDecoration(
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.only(top: 14),
-            prefixIcon: Icon(
-              Icons.lock,
-              color: Color(0xff5ac18e),
+      ],
+    );
+  }
+
+  Widget buildConfirmPassword() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const Text(
+          'Confirm Password',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 6,
+                offset: Offset(0, 2),
+              ),
+            ],
+          ),
+          height: 60,
+          child: TextField(
+            controller: pwConfirmController,
+            obscureText: true,
+            style: const TextStyle(color: Colors.black87),
+            decoration: const InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14),
+              prefixIcon: Icon(
+                Icons.lock,
+                color: Color(0xff5ac18e),
+              ),
+              hintText: 'Confirm Password',
+              hintStyle: TextStyle(color: Colors.black38),
             ),
-            hintText: 'Password',
-            hintStyle: TextStyle(color: Colors.black38),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildUpdatePasswordButton(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 25),
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: () {
+          if (checkPassword()) {
+            updatePassword(pwController.text);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CategoryList()),
+            );
+          }
+        },
+        style: ElevatedButton.styleFrom(
+          elevation: 5,
+          padding: const EdgeInsets.all(15),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          primary: Colors.white,
+        ),
+        child: const Text(
+          'Update Password',
+          style: TextStyle(
+            color: Color(0xff5ac18e),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
-    ],
-  );
-}
+    );
+  }
 
-Widget buildConfirmPassword() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      const Text(
-        'Confirm Password',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      const SizedBox(height: 10),
-      Container(
-        alignment: Alignment.centerLeft,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 6,
-              offset: Offset(0, 2),
-            ),
-          ],
-        ),
-        height: 60,
-        child: TextField(
-          controller: pwConfirmController,
-          obscureText: true,
-          style: const TextStyle(color: Colors.black87),
-          decoration: const InputDecoration(
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.only(top: 14),
-            prefixIcon: Icon(
-              Icons.lock,
-              color: Color(0xff5ac18e),
-            ),
-            hintText: 'Confirm Password',
-            hintStyle: TextStyle(color: Colors.black38),
-          ),
-        ),
-      ),
-    ],
-  );
-}
-
-Widget buildUpdatePasswordButton(BuildContext context) {
-  return Container(
-    padding: const EdgeInsets.symmetric(vertical: 25),
-    width: double.infinity,
-    child: ElevatedButton(
-      onPressed: () => {
-        if(checkPassword()){
-          updatePassword(pwController.text),
+  Widget buildLogOutButton(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 25),
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: () {
+          addStringToSF('');
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const CategoryList()),
-          )
-        }
-      },
-      style: ElevatedButton.styleFrom(
-        elevation: 5,
-        padding: const EdgeInsets.all(15),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        primary: Colors.white,
-      ),
-      child: const Text(
-        'Update Password',
-        style: TextStyle(
-          color: Color(0xff5ac18e),
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
+            MaterialPageRoute(builder: (context) => const LoginScreen()),
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          elevation: 5,
+          backgroundColor: Colors.white,
+          padding: const EdgeInsets.all(15),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        ),
+        child: const Text(
+          'Log Out',
+          style: TextStyle(
+            color: Color(0xffFF0000),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
-    ),
-  );
-}
-
-Widget buildLogOutButton(BuildContext context) {
-  return Container(
-    padding: const EdgeInsets.symmetric(vertical: 25),
-    width: double.infinity,
-    child: ElevatedButton(
-      onPressed: () => {
-        addStringToSF(""),
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const LoginScreen()),
-        )
-
-      },
-      style: ElevatedButton.styleFrom(
-        elevation: 5, backgroundColor: Colors.white,
-        padding: const EdgeInsets.all(15),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      ),
-      child: const Text(
-        'Log Out',
-        style: TextStyle(
-          color: Color(0xffFF0000),
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    ),
-  );
-}
-
-void updatePassword(String pw) async {
-  User? user = await DatabaseHandler.getUser(email);
-  String hashedPW = BCrypt.hashpw(pw, BCrypt.gensalt());
-  user?.setHashedPW(hashedPW);
-  DatabaseHandler.updateUser(user!);
-}
-
-bool checkPassword(){
-  if(pwController.text != pwConfirmController.text){
-    showToast("Passwords do not match");
-    return false;
+    );
   }
-  if(pwController.text.length < 4){
-    showToast("Password must be at least 4 characters");
-    return false;
+
+  void updatePassword(String pw) async {
+    User? user = await DatabaseHandler.getUser(email);
+    String hashedPW = BCrypt.hashpw(pw, BCrypt.gensalt());
+    user?.setHashedPW(hashedPW);
+    DatabaseHandler.updateUser(user!);
   }
-  showToast("Password updated successfully!");
-  return true;
-}
 
-void showToast(String msg) {
-  Fluttertoast.showToast(
-    msg: msg,
-    toastLength: Toast.LENGTH_SHORT,
-    // Duration for which the toast should be visible
-    gravity: ToastGravity.BOTTOM,
-    // Position of the toast on the screen
-    timeInSecForIosWeb: 1,
-    // Time duration for iOS-specific platforms
-    backgroundColor: Colors.black54,
-    // Background color of the toast
-    textColor: Colors.white,
-    // Text color of the toast
-    fontSize: 16.0, // Font size of the toast message
-  );
-}
+  bool checkPassword() {
+    if (pwController.text != pwConfirmController.text) {
+      showToast('Passwords do not match');
+      return false;
+    }
+    if (pwController.text.length < 4) {
+      showToast('Password must be at least 4 characters');
+      return false;
+    }
+    showToast('Password updated successfully!');
+    return true;
+  }
 
-void addStringToSF(String email) async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.setString('email', email);
+  void showToast(String msg) {
+    Fluttertoast.showToast(
+      msg: msg,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.black54,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
+
+  void addStringToSF(String email) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('email', email);
+  }
 }

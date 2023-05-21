@@ -19,8 +19,7 @@ class _MealsListState extends State<MealsList> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    String selectedCategory =
-        widget.selectedCategory; // Use widget.selectedCategory
+    String selectedCategory = widget.selectedCategory; // Use widget.selectedCategory
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
@@ -84,12 +83,17 @@ class _MealsListState extends State<MealsList> {
       onTap: (index) {
         setState(() {
           _selectedItem = index;
+          if (_selectedItem == 2) {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ProfilePage(),
+            ));
+          }
         });
       },
       type: BottomNavigationBarType.fixed,
       selectedLabelStyle: TextStyle(color: Colors.white),
       unselectedLabelStyle: TextStyle(color: Color(0xff222222)),
-      items: [
+      items: const [
         BottomNavigationBarItem(
           icon: Icon(
             Icons.home,
@@ -105,25 +109,15 @@ class _MealsListState extends State<MealsList> {
           label: 'Notification',
         ),
         BottomNavigationBarItem(
-          icon: GestureDetector(
-            onTap: () {
-              // Handle click on "Person" icon
-              Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => ProfilePage(),
-                  ));
-            },
-            child: Icon(
-              Icons.person_rounded,
-              color: Colors.white,
-            ),
+          icon: Icon(
+            Icons.person,
+            color: Colors.white,
           ),
-          label: 'Person',
+          label: 'Profile',
         ),
       ],
     );
   }
-
 
   Widget mealCard(Meals meal) {
     return GestureDetector(
@@ -154,8 +148,7 @@ class _MealsListState extends State<MealsList> {
                 meal.urlImg,
                 width: double.infinity,
                 fit: BoxFit.cover,
-                loadingBuilder: (BuildContext context, Widget child,
-                    ImageChunkEvent? loadingProgress) {
+                loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
                   if (loadingProgress == null) {
                     return child;
                   } else {
@@ -163,15 +156,13 @@ class _MealsListState extends State<MealsList> {
                       color: Colors.grey[300],
                       child: Center(
                         child: CircularProgressIndicator(
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.green),
+                          valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
                         ),
                       ),
                     );
                   }
                 },
-                errorBuilder: (BuildContext context, Object exception,
-                    StackTrace? stackTrace) {
+                errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
                   return Icon(Icons.error);
                 },
               ),

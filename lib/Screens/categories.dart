@@ -178,12 +178,18 @@ class _CategoryListState extends State<CategoryList> {
       onTap: (index) {
         setState(() {
           _selectedItem = index;
+          if(_selectedItem == 2){
+            Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ProfilePage(),
+                ));
+          }
         });
       },
       type: BottomNavigationBarType.fixed,
       selectedLabelStyle: TextStyle(color: Colors.white),
       unselectedLabelStyle: TextStyle(color: Color(0xff222222)),
-      items: [
+      items: const [
         BottomNavigationBarItem(
           icon: Icon(
             Icons.home,
@@ -199,20 +205,11 @@ class _CategoryListState extends State<CategoryList> {
           label: 'Notification',
         ),
         BottomNavigationBarItem(
-          icon: GestureDetector(
-            onTap: () {
-              // Handle click on "Person" icon
-              Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => ProfilePage(),
-                  ));
-            },
-            child: Icon(
-              Icons.person_rounded,
-              color: Colors.white,
-            ),
+          icon: Icon(
+            Icons.person,
+            color: Colors.white,
           ),
-          label: 'Person',
+          label: 'Profile',
         ),
       ],
     );
