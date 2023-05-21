@@ -14,15 +14,19 @@ This is a Flutter application developed as part of a final project. It showcases
 
 <div>
   <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/ed53b655-020a-4d84-bc54-17095b8f45ee" width="200">
-  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/blob/main/assets/87098443/47d90d16-920c-4bef-aa13-849c03860705.png" width="200">
-  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/blob/main/assets/87098443/b44b4180-9d13-45ff-9ae6-38fdb2b1e62f.png" width="200">
+  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/98c79b57-5ceb-4efd-a195-0d745ff5ef44" width="200">
+  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/f65739b1-77d4-4b83-909f-66c107ff28f0" width="200">
 </div>
 
 <div>
-  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/blob/main/assets/87098443/00f8746c-8a3f-4716-a5f0-6e88a758edcc.png" width="200">
-  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/blob/main/assets/87098443/cafb8b8f-a37e-409c-97f3-24318979a205.png" width="200">
-  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/blob/main/assets/87098443/80c83357-84e1-4d84-8f4c-ce0f6fab6ec6.png" width="200">
-  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/blob/main/assets/87098443/f362d5df-8d56-49e5-9cfe-f46db868dc2e.png" width="200">
+  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/426a36a4-890d-4f94-b3b1-63e2422a2c59
+" width="200">
+  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/03e893d9-a865-434b-825c-3574c9ed163d
+" width="200">
+  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/6a83ed78-7952-4fb7-9a7d-379b7d2ea78f
+" width="200">
+  <img src="https://github.com/Irenaeus-XVI/Yummy-Bites-App/assets/87098443/9902be81-2a7b-4d9e-8f39-0a3cd858a865
+" width="200">
 </div>
 
 
